@@ -10,54 +10,106 @@
   </head>
 
   <body　class="d-flex flex-column vh-100">
-    <header>
+    <header class="border-bottom">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <div class="border">
-            <span>LOGO</span>
+          <div class="border border-dark px-sm-5">
+            <span>
+              <h2>LOGO</h2>
+            </span>
           </div>
           <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
-            <li class="nav-item">
-              <div class="item border">
-                商品一覧
-              </div>
-            </li>
+              <li class="nav-item">
+                <div class="item border rounded">
+                  商品一覧
+                </div>
+              </li>
 
-            <li class="nav-item">
-              <div class="customer border">
-                会員一覧
-              </div>
-            </li>
+              <li class="nav-item">
+                <div class="customer border">
+                  会員一覧
+                </div>
+              </li>
 
-            <li class="nav-item">
-              <div class="order border">
-                注文履歴一覧
-              </div>
-            </li>
+              <li class="nav-item">
+                <div class="order border">
+                  注文履歴一覧
+                </div>
+              </li>
 
-            <li class="nav-item">
-              <div class="genre border">
-                ジャンル一覧
-              </div>
-            </li>
+              <li class="nav-item">
+                <div class="genre border">
+                  ジャンル一覧
+                </div>
+              </li>
 
-            <li class="nav-item">
-              <div class="logout border">
-                ログアウト
-              </div>
-            </li>
+              <li class="nav-item">
+                <div class="sign_out border">
+                  ログアウト
+                </div>
+              </li>
 
-            <li class="nav-item">
-              <div class="items border">
-                商品一覧
-              </div>
-            </li>
+              <li class="nav-item">
+                <div class="items border">
+                  商品一覧
+                </div>
+              </li>
+
+            <% elsif customer_signed_in? %>
+              <li class="nav-item">
+                <div class="my border">
+                  マイページ
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <div class="item border">
+                  商品一覧
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <div class="cart border">
+                  カート
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <div class="sign_out border">
+                  ログアウト
+                </div>
+              </li>
+
+            <% else %>
+              <li class="nav-item">
+                <div class="about border rounded">
+                  About
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <div class="item border">
+                  商品一覧
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <div class="sign_up border">
+                  新規登録
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <div class=" sign_in border">
+                  ログイン
+                </div>
+              </li>
+            <% end %>
           </ul>
         </div>
       </nav>
     </header>
-
 
     <%= yield %>
   </body>
