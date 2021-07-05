@@ -9,104 +9,101 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body　class="d-flex flex-column vh-100">
+  <body>
     <header class="border-bottom">
-      <nav class="navbar navbar-expand-lg">
+      <nav class="navbar navbar-expand-sm">
         <div class="container">
           <div class="border border-dark px-sm-5">
             <span>
               <h2>LOGO</h2>
             </span>
           </div>
-          <ul class="navbar-nav ml-auto">
+          <div class="p-2 bd-highlight">
+          <ul class="navbar-nav mr-auto">
             <% if admin_signed_in? %>
               <li class="nav-item">
-                <div class="item border rounded">
+                <div class="item mr-sm-2 p-sm-2 border rounded">
                   商品一覧
                 </div>
               </li>
 
               <li class="nav-item">
-                <div class="customer border">
+                <div class="customer mr-sm-2 p-sm-2 border rounded">
                   会員一覧
                 </div>
               </li>
 
               <li class="nav-item">
-                <div class="order border">
+                <div class="order mr-sm-2 p-sm-2 border rounded">
                   注文履歴一覧
                 </div>
               </li>
 
               <li class="nav-item">
-                <div class="genre border">
+                <div class="genre mr-sm-2 p-sm-2 border rounded">
                   ジャンル一覧
                 </div>
               </li>
 
               <li class="nav-item">
-                <div class="sign_out border">
+                <div class="sign_out mr-sm-2 p-sm-2 border rounded">
                   ログアウト
-                </div>
-              </li>
-
-              <li class="nav-item">
-                <div class="items border">
-                  商品一覧
                 </div>
               </li>
 
             <% elsif customer_signed_in? %>
               <li class="nav-item">
-                <div class="my border">
+                <div class="my mr-sm-2 p-sm-2 border rounded">
                   マイページ
                 </div>
               </li>
 
               <li class="nav-item">
-                <div class="item border">
+                <div class="item mr-sm-2 p-sm-2 border rounded">
                   商品一覧
                 </div>
               </li>
 
               <li class="nav-item">
-                <div class="cart border">
+                <div class="cart mr-sm-2 p-sm-2 border">
                   カート
                 </div>
               </li>
 
               <li class="nav-item">
-                <div class="sign_out border">
+                <div class="sign_out mr-sm-2 p-sm-2 border rounded">
                   ログアウト
                 </div>
               </li>
 
             <% else %>
               <li class="nav-item">
-                <div class="about border rounded">
+                <div class="about  mr-sm-2 p-sm-2 border rounded">
                   About
                 </div>
               </li>
 
               <li class="nav-item">
-                <div class="item border">
+                <div class="item mr-sm-2 p-sm-2 bd-highlight border rounded">
                   商品一覧
                 </div>
               </li>
 
               <li class="nav-item">
-                <div class="sign_up border">
+                <div class="sign_up mr-sm-2 p-sm-2 bd-highlight border rounded">
                   新規登録
                 </div>
               </li>
 
               <li class="nav-item">
-                <div class=" sign_in border">
+                <div class="sign_in mr-sm-2 p-sm-2 bd-highlight border rounded">
                   ログイン
                 </div>
               </li>
             <% end %>
           </ul>
+          </div>
+        </div>
         </div>
       </nav>
     </header>
