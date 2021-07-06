@@ -19,91 +19,91 @@
             </span>
           </div>
           <div class="p-2 bd-highlight">
-          <ul class="navbar-nav mr-auto">
-            <% if admin_signed_in? %>
-              <li class="nav-item">
-                <div class="item mr-sm-2 p-sm-2 border rounded">
-                  商品一覧
-                </div>
-              </li>
+            <ul class="navbar-nav mr-auto">
+              <% if admin_signed_in? %>
+                <li class="nav-item">
+                  <div class="item mr-sm-2 p-sm-2 border rounded">
+                    商品一覧
+                  </div>
+                </li>
 
-              <li class="nav-item">
-                <div class="customer mr-sm-2 p-sm-2 border rounded">
-                  会員一覧
-                </div>
-              </li>
+                <li class="nav-item">
+                  <div class="customer mr-sm-2 p-sm-2 border rounded">
+                    会員一覧
+                  </div>
+                </li>
 
-              <li class="nav-item">
-                <div class="order mr-sm-2 p-sm-2 border rounded">
-                  注文履歴一覧
-                </div>
-              </li>
+                <li class="nav-item">
+                  <div class="order mr-sm-2 p-sm-2 border rounded">
+                    注文履歴一覧
+                  </div>
+                </li>
 
-              <li class="nav-item">
-                <div class="genre mr-sm-2 p-sm-2 border rounded">
-                  ジャンル一覧
-                </div>
-              </li>
+                <li class="nav-item">
+                  <div class="genre mr-sm-2 p-sm-2 border rounded">
+                    ジャンル一覧
+                  </div>
+                </li>
 
-              <li class="nav-item">
-                <div class="sign_out mr-sm-2 p-sm-2 border rounded">
-                  ログアウト
-                </div>
-              </li>
+                <li class="nav-item">
+                  <div class="sign_out mr-sm-2 p-sm-2 border rounded">
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                  </div>
+                </li>
 
-            <% elsif customer_signed_in? %>
-              <li class="nav-item">
-                <div class="my mr-sm-2 p-sm-2 border rounded">
-                  マイページ
-                </div>
-              </li>
+              <% elsif customer_signed_in? %>
+                <li class="nav-item">
+                  <div class="my mr-sm-2 p-sm-2 border rounded">
+                    マイページ
+                  </div>
+                </li>
 
-              <li class="nav-item">
-                <div class="item mr-sm-2 p-sm-2 border rounded">
-                  商品一覧
-                </div>
-              </li>
+                <li class="nav-item">
+                  <div class="item mr-sm-2 p-sm-2 border rounded">
+                    商品一覧
+                  </div>
+                </li>
 
-              <li class="nav-item">
-                <div class="cart mr-sm-2 p-sm-2 border">
-                  カート
-                </div>
-              </li>
+                <li class="nav-item">
+                  <div class="cart mr-sm-2 p-sm-2 border">
+                    カート
+                  </div>
+                </li>
 
-              <li class="nav-item">
-                <div class="sign_out mr-sm-2 p-sm-2 border rounded">
-                  ログアウト
-                </div>
-              </li>
+                <li class="nav-item">
 
-            <% else %>
-              <li class="nav-item">
-                <div class="about  mr-sm-2 p-sm-2 border rounded">
-                  About
-                </div>
-              </li>
+                  <div class="sign_out mr-sm-2 p-sm-2 border rounded">
+                    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+                  </div>
+                </li>
 
-              <li class="nav-item">
-                <div class="item mr-sm-2 p-sm-2 bd-highlight border rounded">
-                  商品一覧
-                </div>
-              </li>
+              <% else %>
+                <li class="nav-item">
+                  <div class="about  mr-sm-2 p-sm-2 border rounded">
+                    About
+                  </div>
+                </li>
 
-              <li class="nav-item">
-                <div class="sign_up mr-sm-2 p-sm-2 bd-highlight border rounded">
-                  新規登録
-                </div>
-              </li>
+                <li class="nav-item">
+                  <div class="item mr-sm-2 p-sm-2 bd-highlight border rounded">
+                    商品一覧
+                  </div>
+                </li>
 
-              <li class="nav-item">
-                <div class="sign_in mr-sm-2 p-sm-2 bd-highlight border rounded">
-                  ログイン
-                </div>
-              </li>
-            <% end %>
-          </ul>
+                <li class="nav-item">
+                  <div class="sign_up mr-sm-2 p-sm-2 bd-highlight border rounded">
+                    新規登録
+                  </div>
+                </li>
+
+                <li class="nav-item">
+                  <div class="sign_in mr-sm-2 p-sm-2 bd-highlight border rounded">
+                    <%= link_to "ログイン", new_admin_session_path %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
           </div>
-        </div>
         </div>
       </nav>
     </header>
