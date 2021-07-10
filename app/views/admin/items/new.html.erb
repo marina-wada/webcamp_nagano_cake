@@ -1,2 +1,21 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <span class="lead my-3 col-md-4 offset-sm-1 bg-light">商品一覧</span>
+    <%= form_with %>
+    <span>商品画像</span>
+    <%= f.attachment_field :image %>
+    <span>商品名</span>
+    <%= f.text_field :name %>
+    <span>商品説明</span>
+    <%= f.text_area :introduction %>
+    <span>ジャンル</span>
+    <%= f.select :genre, [["ケーキ", 1], ["プリン", 2], ["焼き菓子", 3], ["キャンディ"　4]] %>
+    <span>税抜価格</span>
+    <%= f.text_field :price %>
+    <span>販売ステータス</span>
+    <%= f.radio_button :active, "販売中" %>販売中 <%= f.radio_button :active, "販売停止中" %>販売停止中
+    <div class="actions mt-2 col-sm-2 offset-sm-4 col-form-label">
+      <%= f.submit "新規登録", class: "form-control form-control-sm btn btn-success btn-sm" %>
+    </div>
+  </div>
+</div>
