@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <span class="lead my-3 col-md-4 offset-sm-1 bg-light">商品一覧</span>
-    <%= form_with %>
+    <%= form_with model: @item, local:true do |f| %>
     <span>商品画像</span>
     <%= f.attachment_field :image %>
     <span>商品名</span>
