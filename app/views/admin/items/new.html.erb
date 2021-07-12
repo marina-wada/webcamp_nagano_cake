@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <span class="lead my-3 col-md-4 offset-sm-1 bg-light">商品一覧</span>
-    <%= form_with model: @item, local:true do |f| %>
+    <%= form_with model: @new_admin_item, local:true do |f| %>
     <span>商品画像</span>
     <%= f.attachment_field :image %>
     <span>商品名</span>
@@ -9,7 +9,7 @@
     <span>商品説明</span>
     <%= f.text_area :introduction %>
     <span>ジャンル</span>
-    <%= f.select :genre, [["ケーキ", 1], ["プリン", 2], ["焼き菓子", 3], ["キャンディ"　4]] %>
+    <%= f.select :genre, [["ケーキ", 1], ["プリン", 2], ["焼き菓子", 3], ["キャンディ", 4]] %>
     <span>税抜価格</span>
     <%= f.text_field :price %>
     <span>販売ステータス</span>
@@ -17,5 +17,6 @@
     <div class="actions mt-2 col-sm-2 offset-sm-4">
       <%= f.submit "新規登録", class: "btn btn-success btn-sm" %>
     </div>
+    <% end %>
   </div>
 </div>
