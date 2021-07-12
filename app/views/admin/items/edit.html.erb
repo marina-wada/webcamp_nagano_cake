@@ -1,6 +1,24 @@
 <div class="container">
   <div class="row">
     <span class="lead my-3 col-md-4 offset-sm-1 bg-light">
-      商品詳細
+      商品編集
     </span>
+    <%= form_with model: @items, local:true do |f| %>
+    <span>商品画像</span>
+    <%= f.attachment_field :image %>
+    <span>商品名</span>
+    <%= f.text_field :name %>
+    <span>商品説明</span>
+    <%= f.text_area :introduction %>
+    <span>ジャンル</span>
+    <%= f.select :genre, [["ケーキ", 1], ["プリン", 2], ["焼き菓子", 3], ["キャンディ", 4]] %>
+    <span>税抜価格</span>
+    <%= f.text_field :price %>
+    <span>販売ステータス</span>
+    <%= f.radio_button :active, "販売中" %>販売中 <%= f.radio_button :active, "販売停止中" %>販売停止中
+    <div class="actions mt-2 col-sm-2 offset-sm-4">
+      <%= f.submit "変更を保存", class: "btn btn-success btn-sm" %>
+    </div>
+    <% end %>
   </div>
+</div>
