@@ -21,9 +21,9 @@
         <% @items.each do |item| %>
         <tr>
           <th><%= item.id %></th>
-          <th><%= item.name %></th>
+          <th><%= link_to item.name, admin_item_path(item) %></th>
           <th><%= item.price %></th>
-          <th><%= item.genre_id %></th>
+          <th><%= item.genre.name %></th>
           <th><%= item.is_active %></th>
         </tr>
         <% end %>

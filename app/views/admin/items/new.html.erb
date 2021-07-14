@@ -19,14 +19,7 @@
   </div>
   <div class="form-group row">
     <label class="col-sm-2 offset-sm-2 col-form-label">ジャンル</label>
-    <!--<select class="custom-select custom-select-sm col-sm-5">-->
-    <!--  <option selected>--選択してください--</option>-->
-    <!--  <option value="1">ケーキ</option>-->
-    <!--  <option value="2">プリン</option>-->
-    <!--  <option value="3">焼き菓子</option>-->
-    <!--  <option value="4">キャンディ</option>-->
-    <!--</select>-->
-    <%= f.select :genre, [["ケーキ", 1], ["プリン", 2], ["焼き菓子", 3], ["キャンディ", 4]] %>
+      <%= f.collection_select(:genre_id, @genres, :id, :name) %>
   </div>
   <div class="form-group row">
     <label class="col-sm-2 offset-sm-2 col-form-label">税抜価格</label>
@@ -35,8 +28,8 @@
   </div>
   <div class="form-group row">
     <label class="col-sm-2 offset-sm-2 col-form-label">販売ステータス</label>
-      <p><%= f.radio_button :active, "販売中" %>販売中</p>
-      <p class="ml-sm-5"><%= f.radio_button :active, "販売停止中" %>販売停止中</p>
+      <p><%= f.radio_button :is_active, "販売中" %>販売中</p>
+      <p class="ml-sm-5"><%= f.radio_button :is_active, "販売停止中" %>販売停止中</p>
     </div>
 
   <div class="actions mt-1 offset-sm-5">
