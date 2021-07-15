@@ -1,14 +1,12 @@
 <div class="container">
   <div class="row">
-    <span class="lead my-3 col-md-4 offset-sm-1 bg-light">
-      商品詳細
-    </span>
+    <span class="lead my-3 col-sm-2 offset-sm-1 bg-light">商品詳細</span>
   </div>
   <div class="row">
-    <div class="col">
-      <%= attachment_image_tag @item, :image %>
+    <div class="col-sm-3">
+      <%= attachment_image_tag @item, :image, format: 'jpeg', size: "150x150" %>
     </div>
-    <div class="col">
+    <div class="col-sm-4">
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -29,8 +27,8 @@
               (税抜価格)
             </th>
             <th>
-              <%= @item.add_tax_price.to_s(:dalimited) %>
-              (<%= @item.price %>)
+              <%= @item.add_tax_price.to_s(:delimited) %>
+              (<%= @item.price.to_s(:delimited) %>)円
             </th>
           </tr>
           <tr>

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, intial-scale=1, maximum-scale=1">
     <script src="https://kit.fontawesome.com/c5b12faeda.js" crossorigin="anonymous"></script>
 
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -43,7 +44,7 @@
 
                 <li class="nav-item">
                   <div class="genre mr-sm-2 p-sm-2 border rounded">
-                    ジャンル一覧
+                    <%= link_to "ジャンル一覧", admin_genres_path %>
                   </div>
                 </li>
 

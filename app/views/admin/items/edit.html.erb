@@ -4,7 +4,7 @@
       <span class="lead my-3 col-md-2 offset-sm-1 bg-light">商品編集</span>
     </div>
   </div>
-  <%= form_with model: @item, url: admin_items_path(:id), local:true do |f| %>
+  <%= form_with model: @item, url: admin_item_path(@item), local:true do |f| %>
   <div class="form-group row">
     <label class="col-sm-2 offset-sm-2 col-form-label">商品画像</label>
     <%= f.attachment_field :image, class: "attachment-control" %>
