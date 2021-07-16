@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-3">
+      <span class="lead my-3 col-md-4 offset-sm-1 bg-light">会員一覧</span>
+    </div>
+
+    <table class="table my-3 offset-sm-1">
+      <thead>
+        <tr class="table-active">
+          <th>商品ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <th><%= customer.id %></th>
+          <th><%= link_to last_name, first_name, admin_customer_path(customer) %></th>
+          <th><%= customer.email %></th>
+          <th>
+            <% if customer.is_deleted == true %>
+              <p class="text-success">有効</p>
+            <% else %>
+              <p class="text-secondary">無効</p>
+            <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+    <div class="d-flex justify-content-center mt-sm-2">
+      <%= paginate @customers %>
+    </div>
+</div>
