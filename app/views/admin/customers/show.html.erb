@@ -1,2 +1,56 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col mt-3">
+      <span class="lead my-3 col-md-4 offset-md-1 bg-light">
+        <%= customer.full_name %>さんの会員詳細
+      </span>
+    </div>
+
+    <table class="table table-borderless my-3 offset-md-1">
+      <tbody>
+        <% @customer.each do |customer| %>
+        <tr>
+          <th>会員ID</th>
+          <th><%= customer.id %></th>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <th><%= customer.last_name %><%= customer.first_name %></th>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <th><%= customer.last_name_kana %><%= customer.first_name_kana %></th>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <th><%= customer.postal_code %></th>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <th><%= customer.address %></th>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <th><%= customer.email %></th>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <th>
+            <% if customer.is_deleted == true %>
+              <p class="text-success">有効</p>
+            <% else %>
+              <p class="text-secondary">無効</p>
+            <% end %>
+          </th>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="col col-md-4 btn btn-success">
+      <%= link_to "編集する", edit_admin_customer(@customer) %>
+    </div>
+    <div class="col col-md-8 btn btn-primary">
+      注文履歴一覧を見る
+    </div>
+  </div>
+</div>

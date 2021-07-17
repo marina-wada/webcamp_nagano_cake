@@ -11,8 +11,9 @@
         </tr>
       </thead>
       <tbody>
+        <% @orders.each do |order| %>
         <tr>
-          <th></th>
+          <th><%= order.name</th>
           <th></th>
           <th></th>
           <th></th>

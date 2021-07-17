@@ -17,14 +17,15 @@
         <% @customers.each do |customer| %>
         <tr>
           <th><%= customer.id %></th>
-          <th><%= link_to last_name, first_name, admin_customer_path(customer) %></th>
+          <th><%= link_to customer.full_name, admin_customer_path(customer) %></th>
           <th><%= customer.email %></th>
           <th>
             <% if customer.is_deleted == true %>
               <p class="text-success">有効</p>
             <% else %>
-              <p class="text-secondary">無効</p>
+              <p class="text-secondary">退会</p>
             <% end %>
+          </th>
         </tr>
         <% end %>
       </tbody>

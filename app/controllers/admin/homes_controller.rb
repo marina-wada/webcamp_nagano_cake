@@ -1,11 +1,7 @@
 class Admin::HomesController < ApplicationController
   def top
+    @orders = Order.all
   end
 
-  def index
-  end
-
-  def show
-  end
 
 end
