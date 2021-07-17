@@ -13,6 +13,7 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.all
+    @order = Order.find(params[:id])
   end
 
   def edit

@@ -8,7 +8,6 @@
 
     <table class="table table-borderless my-3 offset-md-1">
       <tbody>
-        <% @customer.each do |customer| %>
         <tr>
           <th>会員ID</th>
           <th><%= customer.id %></th>
@@ -43,14 +42,13 @@
             <% end %>
           </th>
         </tr>
-        <% end %>
       </tbody>
     </table>
     <div class="col col-md-4 btn btn-success">
       <%= link_to "編集する", edit_admin_customer(@customer) %>
     </div>
     <div class="col col-md-8 btn btn-primary">
-      注文履歴一覧を見る
+      <%= link_to "注文履歴一覧を見る", admin_order_path(@order) %>
     </div>
   </div>
 </div>
