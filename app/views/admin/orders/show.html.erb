@@ -3,26 +3,28 @@
     <span class="lead my-3 col-sm-2 offset-sm-1 bg-light">注文履歴詳細</span>
     <table class="table table-borderless">
       <tbody>
-        <tr>
-          <th>購入者</th>
-          <tr></tr>
-        </tr>
-        <tr>
-          <th>注文日</th>
-          <th></th>
-        </tr>
-        <tr>
-          <th>配送先</th>
-          <th></th>
-        </tr>
-        <tr>
-          <th>支払方法</th>
-          <th></th>
-        </tr>
-        <tr>
-          <th>注文ステータス</th>
-          <th></th>
-        </tr>
+        <%= form_with model: @order, local true do |f| %>
+          <tr>
+            <th>購入者</th>
+            <tr><%= link_to order.full_name, admin_customer_show_path(@customer)</tr>
+          </tr>
+          <tr>
+            <th>注文日</th>
+            <th></th>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <th></th>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <th></th>
+          </tr>
+          <tr>
+            <th>注文ステータス</th>
+            <th><%= f.collection_select(:status, order, :id, :name) %></th>
+          </tr>
+        <% end %>
       </tbody>
     </table>
     <div class="col">
@@ -38,16 +40,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
+          <%= form_with model: @order, local true do |f| %>
+            <%= @order.each do |order| %>
+            <tr>
+              <td><%= order.item.name %></td>
+              <td><%= order.order_derail.price %></td>
+              <td><%= order.order_derail.amount %></td>
+              <td><%= order.total_price).to_i %></td>
+              <td><%= f.collection_select(:status, order, :id, :name) %></td>
+              <td><%= f.submit "更新", class: "btn btn-success btn-sm" %></td>
+            </tr>
+            <% end %>
+          <% end %>
         </tbody>
       </table>
+    </div>
+    <div class="col">
+
     </div>
   </div>
 </div>
