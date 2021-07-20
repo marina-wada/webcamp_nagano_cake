@@ -1,7 +1,11 @@
 class Admin::HomesController < ApplicationController
   def top
     @orders = Order.all.page(params[:page]).per(10)
+    @order_derail = OrderDetail.all
   end
 
+  def full_name
+    self.last_name + " " + self.first_name
+  end
 
 end

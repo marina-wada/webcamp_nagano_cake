@@ -6,23 +6,26 @@
         <%= form_with model: @order, local true do |f| %>
           <tr>
             <th>購入者</th>
-            <tr><%= link_to order.full_name, admin_customer_show_path(@customer)</tr>
+            <tr><%= link_to order.full_name, admin_customer_show_path(@customer) %></tr>
           </tr>
           <tr>
             <th>注文日</th>
-            <th></th>
+            <th><%= order_derail.created_at('%Y/%m/%d') %></th>
           </tr>
           <tr>
             <th>配送先</th>
-            <th></th>
+            <th><%= order.address %></th>
           </tr>
           <tr>
             <th>支払方法</th>
-            <th></th>
+            <th><%= order.payment_method %></th>
           </tr>
           <tr>
             <th>注文ステータス</th>
-            <th><%= f.collection_select(:status, order, :id, :name) %></th>
+            <th>
+              <%= f.collection_select(:status, order, :id, :name) %>
+              <%= f.submit "更新" %>
+            </th>
           </tr>
         <% end %>
       </tbody>
@@ -36,7 +39,6 @@
             <th>数量</th>
             <th>小計</th>
             <th>制作ステータス</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -46,9 +48,11 @@
               <td><%= order.item.name %></td>
               <td><%= order.order_derail.price %></td>
               <td><%= order.order_derail.amount %></td>
-              <td><%= order.total_price).to_i %></td>
-              <td><%= f.collection_select(:status, order, :id, :name) %></td>
-              <td><%= f.submit "更新", class: "btn btn-success btn-sm" %></td>
+              <td><%= order.total_price.to_i %></td>
+              <td>
+                <%= f.collection_select(:order_derail.status, order, :id, :name) %>
+                <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+              </td>
             </tr>
             <% end %>
           <% end %>
@@ -56,7 +60,22 @@
       </table>
     </div>
     <div class="col">
-
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>商品合計</td>
+            <td><%= order_derail.all.sum(price) %></td>
+          </tr>
+          <tr>
+            <td>送料</td>
+            <td><%= shipping_cost %></td>
+          </tr>
+          <tr>
+            <td>請求金額合計</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

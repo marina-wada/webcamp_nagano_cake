@@ -13,10 +13,10 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <th><%= order.created_at %></th>
-          <th><%= </th>
-          <th><%=</th>
-          <th></th>
+          <th><%= order_derail.created_at %></th>
+          <th><%= link_to home.full_name, admin_order_path(order.id) %></th>
+          <th><%= order_derail.amount %></th>
+          <th><%= f.collection_select(:status, orders, :id, :name) %></th>
         </tr>
       </tbody>
     </table>
