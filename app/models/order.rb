@@ -11,4 +11,11 @@ class Order < ApplicationRecord
     order_derail.to_a.sum { |order| order.total_price }
   end
 
+  def current_shipping_cost
+    current_shipping_cost = 800
+  end
+
+  def self.current_shipping_cost
+    current_shipping_cost = 800
+  end
 end

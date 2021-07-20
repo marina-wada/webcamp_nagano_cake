@@ -68,11 +68,13 @@
           </tr>
           <tr>
             <td>送料</td>
-            <td><%= shipping_cost %></td>
+            <td><%= @order.current_shipping_cost %></td> 
+            <!--!--後で消す--!-->
+            <td><%= Order.current_shipping_cost %></td>
           </tr>
           <tr>
             <td>請求金額合計</td>
-            <td></td>
+            <td><%= order_derail.all.sum(price) + @order.current_shipping_cost %></td>
           </tr>
         </tbody>
       </table>
