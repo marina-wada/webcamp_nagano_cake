@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :publics, controllers: {
+    registrations: 'publics/registrations',
+    sessions: 'publics/sessions'
+  }
+  scope module: :public do
+    root 'homes#top'
+  end
+
   namespace :admin do
     resources :orders, only: [:show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
