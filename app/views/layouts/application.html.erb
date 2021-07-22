@@ -83,7 +83,7 @@
               <% else %>
                 <li class="nav-item">
                   <div class="about  mr-sm-2 p-sm-2 border rounded">
-                    About
+                    <%= link_to "About", about_path %>
                   </div>
                 </li>
 
@@ -101,7 +101,7 @@
 
                 <li class="nav-item">
                   <div class="sign_in mr-sm-2 p-sm-2 bd-highlight border rounded">
-                    <%= link_to "ログイン", new_admin_session_path %>
+                    <%= link_to "ログイン", new_customer_session_path %>
                   </div>
                 </li>
               <% end %>

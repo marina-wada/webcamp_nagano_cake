@@ -3,37 +3,43 @@
     <span class="lead my-3 col-sm-2 offset-sm-1 bg-light">商品詳細</span>
   </div>
   <div class="row">
-    <div class="col-sm-3">
-      <%= attachment_image_tag @item, :image, format: 'jpeg', size: "150x150" %>
+    <div class="col-sm-3 mt-5">
+      <%= attachment_image_tag @item, :image, format: 'jpeg', size: "200x200" %>
     </div>
-    <div class="col-sm-4">
-      <table class="table table-borderless">
+    <div class="col-sm-4 mt-5">
+      <table class="table text-nowrap table-borderless">
         <tbody>
           <tr>
-            <th>商品名</th>
-            <th><%= @item.name %></th>
+            <td>商品名</td>
+            <td><%= @item.name %></td>
           </tr>
           <tr>
-            <th>商品説明</th>
-            <th><%= @item.introduction %></th>
+            <td>商品説明</td>
+            <td><%= @item.introduction %></td>
           </tr>
           <tr>
-            <th>ジャンル</th>
-            <th><%= @item.genre.name %></th>
+            <td>ジャンル</td>
+            <td><%= @item.genre.name %></td>
           </tr>
           <tr>
-            <th>
+            <td>
               税込価格<br>
               (税抜価格)
-            </th>
-            <th>
+            </td>
+            <td>
               <%= @item.add_tax_price.to_s(:delimited) %>
               (<%= @item.price.to_s(:delimited) %>)円
-            </th>
+            </td>
           </tr>
           <tr>
-            <th>販売ステータス</th>
-            <th><%= @item.is_active %></th>
+            <td>販売ステータス</td>
+            <td>
+              <% if @item.is_active == true %>
+                <p class="text-success">販売中</p>
+              <% else %>
+                <p class="text-secondary">販売停止中</p>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
