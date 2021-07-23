@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col col-md-3 mt-md-4">
+    <div class="col col-md-2 mt-md-4">
       <%= render 'public/list',genre:@genre %>
     </div>
-    <div class="col col-md-5 mt-md-4 cover-img" style="background-image:url('img/cake_ya_building.png');">
+    <div class="col col-md-6 mt-md-4 cover-img" style="background-image:url('img/cake_ya_building.png');">
       <div class="cover-text text-left border mx-auto">
         <p>
           ようこそ、ながのCAKEへ！<br>
@@ -15,18 +15,18 @@
     </div>
   </div>
   <div class="row">
-    <h3>新着商品</h3>
+    <h3 class="offset-md-2">新着商品</h3>
+  </div>
+  <div class="row">
     <% @item.each do |item| %>
-    <div class="col">
-      <%= attachment_image_tag item, :image, format: 'jpeg', size: "100x100" %>
-      <%= item.introduction %>
-      <%= item.add_tax_price.to_s(:delimited) %>
+      <div class="offset-md-2">
+      <%= attachment_image_tag item, :image, format: 'jpeg', size: "100x100" %><br>
+      <%= item.introduction %><br>
+      ¥<%= item.add_tax_price.to_s(:delimited) %>
     </div>
     <% end %>
   </div>
-  <div class="row">
-    <div class="text-right">
-      <%= link_to "全ての商品を見る >", items_path %>
-    </div>
-  </div>
+  <p class="text-right">
+    <%= link_to "全ての商品を見る >", items_path %>
+  </p>
 </div>
