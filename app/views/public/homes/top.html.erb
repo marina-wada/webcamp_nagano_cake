@@ -14,16 +14,17 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <h3 class="offset-md-2">新着商品</h3>
+  <div class="row offset-md-2" style="with: 50%">
+    <h3 class="mt-md-3">新着商品</h3>
   </div>
-  <div class="row">
+  <div class="row offset-md-2" style="with: 50% margin: 0 auto">
     <% @item.each do |item| %>
-      <div class="offset-md-2">
-      <%= attachment_image_tag item, :image, format: 'jpeg', size: "100x100" %><br>
-      <%= item.introduction %><br>
-      ¥<%= item.add_tax_price.to_s(:delimited) %>
-    </div>
+      <div class="col-md-3">
+
+          <%= attachment_image_tag item, :image, format: 'jpeg', size: "100x100" %><br>
+          <%= item.introduction %><br>
+          ¥<%= item.add_tax_price.to_s(:delimited) %>
+      </div>
     <% end %>
   </div>
   <p class="text-right">
