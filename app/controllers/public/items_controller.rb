@@ -1,7 +1,7 @@
 class Public::ItemsController < ApplicationController
   def index
-  end
-
-  def show
+    @items = Item.all.page(params[:page]).per(8)
+    @item = Item.where(is_active: true)
+    @genre = Genre.all
   end
 end

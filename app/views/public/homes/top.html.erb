@@ -20,10 +20,9 @@
   <div class="row offset-md-2" style="with: 50% margin: 0 auto">
     <% @item.each do |item| %>
       <div class="col-md-3">
-
-          <%= attachment_image_tag item, :image, format: 'jpeg', size: "100x100" %><br>
-          <%= item.introduction %><br>
-          ¥<%= item.add_tax_price.to_s(:delimited) %>
+        <%= attachment_image_tag item, :image, format: 'jpeg', size: "100x100" %><br>
+        <%= item.introduction %><br>
+        ¥<%= item.add_tax_price.to_s(:delimited) %>
       </div>
     <% end %>
   </div>
