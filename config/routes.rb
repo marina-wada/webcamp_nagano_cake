@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'about' => 'homes#about'
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
   end
 
   namespace :admin do

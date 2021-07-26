@@ -1,2 +1,44 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 mt-md-4">
+      <%= render 'public/list',genre:@genre %>
+    </div>
+
+    <div class="col-md-3 mt-md-4">
+      <%= attachment_image_tag @item, :image, format: 'jpeg', size: "200x200" %>
+    </div>
+
+    <div class="col">
+      <div class="row">
+        <h3 class="col-md-10 mt-md-4 font-weight-bold">
+          <%= @item.name %>
+        </h3>
+        <span class="col-md-10 mt-md-1 mb-md-5 ml-md-2">
+          <%= @item.introduction %>
+        </span>
+      </div>
+      <div class="row ml-md-2">
+        <h3 class="font-weight-normal">
+          ¥<%= @item.price.to_s(:delimited) %>
+        </h3>
+        <span class="small ml-md-1 mt-md-2">(税込)</span>
+
+      </div>
+
+      <%# form_with model: @cart_item, url: cart_items_index_path, local:true do |f| %>
+      <div class="row">
+        <div class="col">
+          <%#= f.select :amount, [1,2,3,4,5,6,7,8,9,10], placeholder:"個数選択" %>
+        </div>
+        <div class="col">
+          <%#= f.submit "カートに入れる", class: "btn btn-success" %>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    </div>
+  </div>
+</div>
