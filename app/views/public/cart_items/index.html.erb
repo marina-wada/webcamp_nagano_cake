@@ -27,7 +27,7 @@
             <%= items.name %>
           </td>
           <td><%= items.add_tax_price.to_s(:delimited) %></td>
-          <%= form_with model: @cart_item, url: cart_item_path, local:true do |f| %>
+          <%= form_with model: @cart_item, url: cart_item_path(@cart_item), local:true do |f| %>
           <td>
             <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
             <%= f.submit "変更", class: "btn btn-success" %>
@@ -37,6 +37,7 @@
           <td><%= button_to "削除する", cart_item_path, class: "btn btn-danger btn-sm",  method: :delete %></td>
         </tr>
       </tbody>
+      <% end %>
     </table>
   </div>
 

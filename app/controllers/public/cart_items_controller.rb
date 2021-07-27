@@ -1,5 +1,8 @@
 class Public::CartItemsController < ApplicationController
   def index
+    @items = Item.all
+    @cart_item = CartItem.all
+    @order = Order.all
   end
 
   def create
@@ -14,6 +17,11 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
+  def update
+    @cart_item = CartItem.find(params.id)
+    @cart_item.update(cart_item_params)
+    redirect_to cart_items_path
+  end
   private
 
   def cart_item_params
