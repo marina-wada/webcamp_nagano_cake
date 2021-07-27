@@ -1,2 +1,64 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row mt-md-3">
+    <div class="col">
+      <span class="lead col-md-2 offset-md-0 bg-light">ショッピングカート</span>
+    </div>
+    <div class="col text-right">
+      <%= button_to "カートを空にする", destroy_all_cart_items_path, class: "btn btn-danger btn-sm",  method: :delete %>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-bordered mt-md-3 col-md-12 offset-md-0">
+      <thead class="thead-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @items.each do |items| %>
+      <tbody>
+        <tr>
+          <td>
+            <%= attachment_image_tag items, :image, format: 'jpeg', size: "10x10" %>
+            <%= items.name %>
+          </td>
+          <td><%= items.add_tax_price.to_s(:delimited) %></td>
+          <%= form_with model: @cart_item, url: cart_item_path, local:true do |f| %>
+          <td>
+            <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+            <%= f.submit "変更", class: "btn btn-success" %>
+          </td>
+          <% end %>
+          <td><%= order_derail.all.sum(price) %></td>
+          <td><%= button_to "削除する", cart_item_path, class: "btn btn-danger btn-sm",  method: :delete %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="col mt-md-5">
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
+    </div>
+    <div class="col text-right">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="table-secondary">合計金額</th>
+            <th><%= order_derail.all.sum(price) + @order.current_shipping_cost %></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-center">
+      <%= button_to "情報入力に進む", class: "btn btn-success" %>
+    </div>
+  </div>
+</div>

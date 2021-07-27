@@ -25,15 +25,17 @@
 
       </div>
 
-      <%# form_with model: @cart_item, url: cart_items_index_path, local:true do |f| %>
-      <div class="row">
-        <div class="col">
-          <%#= f.select :amount, [1,2,3,4,5,6,7,8,9,10], placeholder:"個数選択" %>
+      <%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
+      <div class="form-group row">
+        <div class="col-md-3 mt-md-4 ml-md-4">
+          <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], include_blank: "個数選択　　", class: "form-control form-control-lg" %>
+          <%= f.hidden_field :item_id, value: @item.id %>
         </div>
-        <div class="col">
-          <%#= f.submit "カートに入れる", class: "btn btn-success" %>
+        <div class="col-md-3 mt-md-4 ml-md-4">
+          <%= f.submit "カートに入れる", class: "btn btn-success btn-sm form-control" %>
         </div>
       </div>
+      <% end %>
 
 
 
