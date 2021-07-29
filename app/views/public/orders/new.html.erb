@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <span class="lead col-md-2 offset-md-0 bg-light">注文情報入力</span>
+  </div>
+  <%= form_with model: @order, url: orders_confirm_path do |f| %>
+  <div class="form-group row mt-md-2">
+    <label class="col-form-label">支払方法</label>
+    <div class="form-check mt-md-2">
+      <%= f.radio_button :total_payment, :クレジットカード %>
+      <%= f.label :クレジットカード %>
+    <!--</div>-->
+    <!--<div class="form-check">-->
+      <%= f.radio_button :tatal_payment, :銀行振込 %>
+      <%= f.label :銀行振込 %>
+    </div>
+
+  </div>
+  <% end %>
+</div>
