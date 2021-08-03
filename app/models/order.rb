@@ -20,4 +20,5 @@ class Order < ApplicationRecord
   def self.current_shipping_cost
     current_shipping_cost = 800
   end
+
 end

@@ -15,4 +15,8 @@ class Customer < ApplicationRecord
     self.last_name_kana + " " + self.first_name_kana
   end
 
+  def residence
+    self.postal_code + " " + self.address
+  end
+
 end
