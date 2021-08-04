@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row">
+  <div class="row mt-md-3">
     <span class="lead col-md-2 offset-md-0 bg-light">注文情報確認</span>
   </div>
 
   <div class="row">
-    <div class="col">
-      <table class="table bordered">
+    <div class="col-md-8 mt-md-1">
+      <table class="table table-bordered">
         <thead class="thead-light">
           <tr>
             <th>商品名</th>
@@ -19,7 +19,7 @@
           <tr>
             <td><%= cart_item.item.name %></td>
             <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
-            <td><%= cart_item.item.amount %></td>
+            <td><%= cart_item.amount %></td>
             <% @sum += cart_item.item.add_tax_price * cart_item.amount %>
             <td><%= (cart_item.item.add_tax_price * cart_item.amount).to_s(:delimited) %></td>
           </tr>
@@ -27,12 +27,47 @@
         <% end %>
       </table>
     </div>
-    
-    <div class="col">
-      <table class="table bordered">
-        
+
+    <div class="col-md-4">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th class="table-secondary">送料</td>
+            <td><%= @order.current_shipping_cost %></td>
+          </tr>
+          <tr>
+            <th class="table-secondary">商品合計</th>
+            <td><%= (@sum).to_s(:delimited)  %></td>
+          </tr>
+          <tr>
+            <th class="table-secondary">請求金額</th>
+            <td><%= (@sum + @order.current_shipping_cost).to_s(:delimited) %></td>
+          </tr>
+        </thead>
       </table>
     </div>
   </div>
+  <div class="row">
+    <div class="col">
+      <span class="lead">支払方法</span>
+    </div>
+    <div class="col">
+      <%= @order.total_payment %>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col">
+      <span class="lead">お届け先</span>
+    </div>
+    <div class="col">
+      <%= current_customer.addresses %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-center mt-md-5">
+      <%= link_to "注文を確定する", orders_complete_path, class: "btn btn-success col-md-3" %>
+    </div>
+  </div>
 </div>

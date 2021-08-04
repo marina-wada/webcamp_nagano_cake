@@ -7,9 +7,10 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'about' => 'homes#about'
     resources :items, only: [:index, :show]
-    resources :orders, only: [:new, :create, :index, :show]
+    post 'orders/confirm'
     get 'orders/complete' => 'orders#complete'
-    post 'orders/confirm' => 'orders#confirm'
+    resources :orders, only: [:new, :create, :index, :show]
+
     resources:addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :cart_items, only: [:index, :update, :destroy, :create] do
       collection do

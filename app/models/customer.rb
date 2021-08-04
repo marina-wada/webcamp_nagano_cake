@@ -19,4 +19,8 @@ class Customer < ApplicationRecord
     self.postal_code + " " + self.address
   end
 
+  def destination
+    self.postal_code + " " + self.address + " " + self.last_name + " " + self.first_name
+  end
+
 end

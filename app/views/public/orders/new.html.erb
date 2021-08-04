@@ -2,7 +2,7 @@
   <div class="row">
     <span class="lead col-md-2 offset-md-0 bg-light">注文情報入力</span>
   </div>
-  <%= form_with model: @order, url: orders_confirm_path do |f| %>
+  <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
   <div class="custom-control custom-radio mt-md-2">
     <label class="col-form-label">支払方法</label>
     <div class="radio-inline col-md-4 ml-md-3">
@@ -16,8 +16,7 @@
     <div class="radio-inline col-md-12 ml-md-3">
       <%= f.radio_button :address, "address", checked: true %>ご自身の住所
       <div class="col">
-        〒<%= current_customer.residence %><br>
-        <%= current_customer.full_name %>
+        〒<%= current_customer.destination %>
       </div>
     </div>
 
