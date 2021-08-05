@@ -6,29 +6,29 @@
   <div class="custom-control custom-radio mt-md-2">
     <label class="col-form-label">支払方法</label>
     <div class="radio-inline col-md-4 ml-md-3">
-      <%= f.radio_button :total_payment, "クレジットカード", checked: true %>クレジットカード<br>
-      <%= f.radio_button :total_payment, "銀行振込" %>銀行振込
+      <%= f.radio_button :payment_method, 0, checked: true %>クレジットカード<br>
+      <%= f.radio_button :payment_method, 1 %>銀行振込
 
     </div>
   </div>
   <div class="custom-control custom-radio mt-md-2">
     <label class="col-form-label">お届け先</label>
     <div class="radio-inline col-md-12 ml-md-3">
-      <%= f.radio_button :address, "address", checked: true %>ご自身の住所
+      <%= f.radio_button :address_option, "0", checked: true %>ご自身の住所
       <div class="col">
         〒<%= current_customer.destination %>
       </div>
     </div>
 
     <div class="radio-inline col-md-12 ml-md-3 mt-md-2">
-      <%= f.radio_button :address, "address" %>登録住所から選択
+      <%= f.radio_button :address_option, "1" %>登録住所から選択
       <div class="col-md-12">
-        <%= f.collection_select :address, current_customer.addresses, :id, :destination %>
+        <%= f.collection_select :address_id, current_customer.addresses, :id, :destination %>
       </div>
     </div>
 
     <div class="radio-inline col-md-12 ml-md-3 mt-md-2">
-      <%= f.radio_button :address, "address" %>新しいお届け先
+      <%= f.radio_button :address_option, "2" %>新しいお届け先
       <div class="form-group row ml-md-1">
         <%= f.label :郵便番号（ハイフンなし）, class: "col-md-3 col-form-label col-form-label-sm" %>
         <div class="col-md-4">
