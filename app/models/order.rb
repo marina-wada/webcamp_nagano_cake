@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :item
   belongs_to :customer
+  has_many :order_details
 
   def add_tax_price
     (self.price * 1.10).round

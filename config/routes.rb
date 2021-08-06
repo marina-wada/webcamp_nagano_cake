@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :items, only: [:index, :show]
     post 'orders/confirm'
-    get 'orders/complete' => 'orders#complete'
+    get 'orders/complete'
     resources :orders, only: [:new, :create, :index, :show]
 
     resources:addresses, only: [:index, :edit, :create, :update, :destroy]

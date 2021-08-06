@@ -67,10 +67,13 @@
     </div>
   </div>
 
-  <%= form_with model: @order, url: orders_complete_path, local: true do |f| %>
-  <div class="col mt-md-5">
-    <%= f.submit :注文を確定する, class: "offset-md-4 col-md-2 btn btn-success btn-sm" %>
-  </div>
+  <%= form_with model: @order, url: orders_path, local: true do |f| %>
+    <div class="col mt-md-5">
+      <%= f.hidden_field :postal_code %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :name %>
+      <%= f.submit :注文を確定する, class: "offset-md-4 col-md-2 btn btn-success btn-sm" %>
+    </div>
   <% end %>
 
 </div>

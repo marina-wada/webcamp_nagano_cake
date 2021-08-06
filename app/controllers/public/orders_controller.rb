@@ -22,7 +22,10 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  def complete
+  def create
+    @order = Order.new(order_params)
+    @order.save
+    redirect_to orders_complete_path
   end
 
   def index
