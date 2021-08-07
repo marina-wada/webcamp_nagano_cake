@@ -1,2 +1,32 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <span class="lead col-md-2 offset-md-0 mt-md-3 bg-light">会員情報修正</span>
+  </div>
+  <%= form_with model: @customer, url: customer_path(current_customer), local: true do |f| %>
+    <div class="form-group row">
+      <div class="col">
+        <%= f.label :氏名, class: "col-md-4 col-form-label col-form-label-sm" %>
+      </div>
+      <div class="col">
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "col-md-4 form-control form-control-sm" %>
+      </div>
+      <div class="col">
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "col-md-4 form-control form-control-sm" %>
+      </div>
+      
+    </div>
+    <div class="form-group row">
+      <div class="col">
+        <%= f.label :フリガナ, class: "col-md-4 col-form-label col-form-label-sm" %>
+      </div>
+      <div class="col">
+        <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: "col-md-4 form-control form-control-sm" %>
+      </div>
+      <div class="col">
+        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class: "col-md-4 form-control form-control-sm" %>
+      </div>
+    </div>
+    
+    <div class="col"></div>
+    <% end %>
+</div>
