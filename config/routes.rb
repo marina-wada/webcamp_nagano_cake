@@ -7,10 +7,12 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'about' => 'homes#about'
     resources :items, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update]
+    get 'customers/nsubscribe'
+    patch 'customers/withdraw'
     post 'orders/confirm'
     get 'orders/complete'
     resources :orders, only: [:new, :create, :index, :show]
-
     resources:addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :cart_items, only: [:index, :update, :destroy, :create] do
       collection do

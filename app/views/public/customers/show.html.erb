@@ -1,0 +1,62 @@
+<div class="container">
+  <div  class="row">
+    <span class="lead col-md-2 offset-md-0 mt-md-3 bg-light">マイページ</span>
+  </div>
+  <div class="form-group row mt-md-3">
+      <div class="col-md-2">
+        <span class="lead">登録情報</span>
+      </div>
+      <div class="col-md-2">
+        <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-success btn-sm form-control" %>
+      </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table table-bordered">
+          <tr>
+            <th class="table-secondary">氏名</th>
+            <td><%= @customer.full_name %></td>
+        　</tr>
+        　<tr>
+        　  <th class="table-secondary">カナ</th>
+        　  <td><%= @customer.full_name_kana %></td>
+        　</tr>
+        　<tr>
+        　  <th class="table-secondary">郵便番号</th>
+        　  <td><%= @customer.postal_code %></td>
+        　</tr>
+        　<tr>
+        　  <th class="table-secondary">住所</th>
+        　  <td><%= @customer.address %></td>
+        　</tr>
+        　<tr>
+        　  <th class="table-secondary">電話番号</th>
+        　  <td><%= @customer.telephone_number %></td>
+        　</tr>
+        　<tr>
+        　  <th class="table-secondary">メールアドレス</th>
+        　  <td><%= @customer.email %></td>
+        　</tr>
+        </table>
+      </div>
+    </div>
+
+  <div class="form-group row mt-md-3">
+    <div class="col-md-2">
+      <span class="lead">配送先</span>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "一覧を見る", address_path, class: "btn btn-primary btn-sm form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row mt-md-3">
+    <div class="col-md-2">
+      <span class="lead">注文履歴</span>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "一覧を見る", orders_path, class: "btn btn-primary btn-sm form-control" %>
+    </div>
+  </div>
+</div>
