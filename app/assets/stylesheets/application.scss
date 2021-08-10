@@ -13,6 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ .cover-img{
+  background-image: image-url('cake_ya_building.png');
+}
+ .height-thank{
+   height: 800px;
+ }
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';

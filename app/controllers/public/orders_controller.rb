@@ -24,12 +24,14 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     @order.save
+    @order_detail.save
     redirect_to orders_complete_path
   end
 
   def index
-    @orders = current_customer.order
+    @orders = current_customer.orders
   end
 
   def show
