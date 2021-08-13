@@ -1,12 +1,15 @@
 class Public::OrdersController < ApplicationController
   def new
-    @order = Order.new
+    if current_customer.cart_items.blank?
+      redirect_to cart_items_path
+    else
+        @order = Order.new
+    end
   end
 
   def confirm
     @cart_items = current_customer.cart_items
     @total_payment = 0
-
     @order = Order.new(order_params)
     @order.payment_method = params[:order][:payment_method].to_i
     @order.shipping_cost = 800
@@ -25,6 +28,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = current_customer.orders.new(order_params)
     @order.total_payment = params[:total_payment]
+    @order.payment_method = params[:order][:payment_method].to_i
     @order.save
     @cart_items = current_customer.cart_items.all
       @cart_items.each do |cart_item|

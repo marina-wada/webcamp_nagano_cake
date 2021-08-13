@@ -20,16 +20,15 @@
       <div class="row ml-md-2">
         <h3 class="font-weight-normal">
           ¥<%= @item.add_tax_price.to_s(:delimited) %>
-
         </h3>
         <span class="small ml-md-1 mt-md-2">(税込)</span>
-
       </div>
 
       <%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
       <div class="form-group row">
         <div class="col-md-3 mt-md-4 ml-md-4">
-          <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], include_blank: "個数選択　　", class: "form-control form-control-lg" %>
+          <%#= f.select :amount, [1,2,3,4,5,6,7,8,9,10], include_blank: "個数選択", class: "form-control form-control-lg" %>
+          <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], class: "form-control form-control-lg" %>
           <%= f.hidden_field :item_id, value: @item.id %>
         </div>
         <div class="col-md-3 mt-md-4 ml-md-4">
@@ -37,9 +36,6 @@
         </div>
       </div>
       <% end %>
-
-
-
     </div>
 
     </div>
