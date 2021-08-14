@@ -3,34 +3,34 @@
     <span class="lead my-3 col-sm-2 offset-sm-1 bg-light">注文履歴詳細</span>
     <table class="table table-borderless">
       <tbody>
-        <%= form_with model: @order, local true do |f| %>
           <tr>
             <th>購入者</th>
-            <tr><%= link_to order.full_name, admin_customer_show_path(@customer) %></tr>
+            <td><%= link_to @order.customer.full_name, admin_customer_path(@order.id) %></td>
           </tr>
           <tr>
             <th>注文日</th>
-            <th><%= order_derail.created_at('%Y/%m/%d') %></th>
+            <th><%= @order.created_at.strftime('%Y/%m/%d %-H:%-M:%-S') %></th>
           </tr>
           <tr>
             <th>配送先</th>
-            <th><%= order.address %></th>
+            <th><%= @order.address %></th>
           </tr>
           <tr>
             <th>支払方法</th>
-            <th><%= order.payment_method %></th>
+            <th><%= @order.payment_method %></th>
           </tr>
           <tr>
             <th>注文ステータス</th>
+            <%= form_with model: @order, url: admin_order_path(@order), local: true do |f| %>
             <th>
-              <%= f.collection_select(:status, order, :id, :name) %>
+              <%#= f.collection_select(:order.status, @order, :id, :status) %>
               <%= f.submit "更新" %>
             </th>
           </tr>
         <% end %>
       </tbody>
     </table>
-    <div class="col">
+    <div class="col-md-8">
       <table class="table">
         <thead class="thead-active">
           <tr>
@@ -42,15 +42,15 @@
           </tr>
         </thead>
         <tbody>
-          <%= form_with model: @order, local true do |f| %>
-            <%= @order.each do |order| %>
+          <%= form_with model: @order, url: admin_order_path(@order), local: true do |f| %>
+            <% @order_details.each do |order_detail| %>
             <tr>
-              <td><%= order.item.name %></td>
-              <td><%= order.order_derail.price %></td>
-              <td><%= order.order_derail.amount %></td>
-              <td><%= order.total_price.to_i %></td>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.price.to_s(:delimited) %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= (order_detail.price * order_detail.amount).to_s(:delimited) %></td>
               <td>
-                <%= f.collection_select(:order_derail.status, order, :id, :name) %>
+                <%#= f.collection_select(:order_derail.status, order, :id, :name) %>
                 <%= f.submit "更新", class: "btn btn-success btn-sm" %>
               </td>
             </tr>
@@ -59,22 +59,20 @@
         </tbody>
       </table>
     </div>
-    <div class="col">
+    <div class="col-md-3">
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <td>商品合計</td>
-            <td><%= order_derail.all.sum(price) %></td>
+            <th>商品合計</th>
+            <td><%= @order.total_payment.to_s(:delimited) %></td>
           </tr>
           <tr>
-            <td>送料</td>
-            <td><%= @order.current_shipping_cost %></td> 
-            <!--!--後で消す--!-->
-            <td><%= Order.current_shipping_cost %></td>
+            <th>送料</th>
+            <td><%= @order.current_shipping_cost %></td>
           </tr>
           <tr>
-            <td>請求金額合計</td>
-            <td><%= order_derail.all.sum(price) + @order.current_shipping_cost %></td>
+            <th>請求金額合計</th>
+            <td><%= (@order.total_payment + @order.current_shipping_cost).to_s(:delimited) %></td>
           </tr>
         </tbody>
       </table>

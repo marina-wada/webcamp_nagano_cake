@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <span class="lead my-3 col-sm-2 offset-sm-1 bg-light">注文履歴一覧</span>
-    <table class="table my-3 offset-sm-1">
+    <span class="lead my-3 col-md-2 offset-md-1 bg-light">注文履歴一覧</span>
+    <table class="table my-3 offset-md-1 col-md-9">
       <thead>
         <tr class="table-active">
           <th>購入日時</th>
@@ -13,8 +13,8 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <th><%= order.created_at.strftime('%Y/%m/%d') %></th>
-          <th><%= link_to order.customer.full_name, admin_order_path(order) %></th>
+          <th><%= link_to order.created_at.strftime('%Y/%m/%d %-H:%-M:%-S'), admin_order_path(order) %></th>
+          <th><%= order.customer.full_name %></th>
           <th><%#= order.order_detail.sum(:amount) %></th>
           <th><%= order.status %></th>
         </tr>
