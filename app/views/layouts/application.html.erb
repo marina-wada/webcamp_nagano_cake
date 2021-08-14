@@ -18,10 +18,10 @@
         <div class="container">
           <div class="border border-dark px-sm-5">
             <span>
-              <h2>LOGO</h2>
+              <h2><%= link_to "LOGO", root_path %></h2>
             </span>
           </div>
-          <div class="p-2 bd-highlight">
+          <div class="row p-2 bd-highlight">
             <ul class="navbar-nav mr-auto">
               <% if admin_signed_in? %>
                 <li class="nav-item">
@@ -55,6 +55,9 @@
                 </li>
 
               <% elsif customer_signed_in? %>
+                <div class="mt-md-3 mr-sm-5">
+                  ようこそ、<%= current_customer.last_name %>さん！
+                </div>
                 <li class="nav-item">
                   <div class="my mr-sm-2 p-sm-2 border rounded">
                     <%= link_to "マイページ", customer_path(current_customer) %>
@@ -106,6 +109,15 @@
                 </li>
               <% end %>
             </ul>
+          </div>
+          <!--<div class="row">-->
+          <!--  <div class="search-form">-->
+          <!--    <%#= form_with scope: :search, url: items_path, method: :get, local: true) do |f| %>-->
+          <!--      <div class="field">-->
+          <!--        <%#= f.text_field :name, value: @search_params[:name] %>-->
+          <!--      </div>-->
+          <!--    <%# end %>-->
+          <!--  </div>-->
           </div>
         </div>
       </nav>

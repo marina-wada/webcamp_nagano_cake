@@ -15,9 +15,16 @@
  */
  .cover-img{
   background-image: image-url('cake_ya_building.png');
+   height: 250px;
+   weight: 100%;
+   background-size: cover
+}
+.cover-text{
+  margin: 0 auto;
+  justify-content: center;
 }
  .height-thank{
-   height: 800px;
+   height: 500px;
  }
 @import "bootstrap";
 @import 'font-awesome-sprockets';

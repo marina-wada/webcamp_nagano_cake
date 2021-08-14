@@ -11,6 +11,10 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
   end
 
+  private
 
+  # def item_search_params
+  #   params.fetch(:search, {}).permit(:name)
+  # end
 
 end
