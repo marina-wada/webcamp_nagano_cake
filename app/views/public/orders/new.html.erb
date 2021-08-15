@@ -4,14 +4,14 @@
   </div>
   <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
   <div class="custom-control custom-radio mt-md-2">
-    <label class="col-form-label">支払方法</label>
+    <%= f.label :支払方法, class: "col-md-3 col-form-label col-form-label-sm" %>
     <div class="radio-inline col-md-4 ml-md-3">
       <%= f.radio_button :payment_method, 0, checked: true %>クレジットカード<br>
       <%= f.radio_button :payment_method, 1 %>銀行振込
     </div>
   </div>
   <div class="custom-control custom-radio mt-md-2">
-    <label class="col-form-label">お届け先</label>
+    <%= f.label :お届け先, class: "col-md-3 col-form-label col-form-label-sm" %>
     <div class="radio-inline col-md-12 ml-md-3">
       <%= f.radio_button :address_option, "0", checked: true %>ご自身の住所
       <div class="col">

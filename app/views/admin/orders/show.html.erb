@@ -5,7 +5,7 @@
       <tbody>
           <tr>
             <th>購入者</th>
-            <td><%= link_to @order.customer.full_name, admin_customer_path(@order.id) %></td>
+            <td><%= link_to @order.customer.full_name, admin_customer_path(@order.customer.id) %></td>
           </tr>
           <tr>
             <th>注文日</th>
@@ -43,7 +43,7 @@
         </thead>
         <tbody>
           <%= form_with model: @order, url: admin_order_path(@order), local: true do |f| %>
-            <% @order_details.each do |order_detail| %>
+            <% @order.order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td>
               <td><%= order_detail.price.to_s(:delimited) %></td>

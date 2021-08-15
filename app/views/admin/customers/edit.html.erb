@@ -1,50 +1,82 @@
 <div class="container">
   <div class="row">
     <div class="col mt-3">
-      <span class="lead my-3 col-md-4 offset-md-1 bg-light">
-        <%= customer.full_name %>さんの会員情報編集
+      <span class="lead my-3 col-md-3 bg-light">
+        <%= @customer.full_name %>さんの会員情報編集
       </span>
     </div>
   </div>
 
   <%= form_with model: @customer, url: admin_customer_path(@customer), local:true do |f| %>
-  <div class="form-group row">
-    <label class="col-form-label">会員ID</label>
-    <%= customer.id, class: "attachment-control" %>
-  </div>
-  <div class="form-group row">
-    <label class="col-form-label">氏名</label>
-    <%= f.text_field :last_name, class: "form-control" %>
-    <%= f.text_field :first_name, class: "form-control" %>
-  </div>
-  <div class="form-group row">
-    <label class="col-form-label">フリガナ</label>
-    <%= f.text_field :last_name_kana, class: "form-control" %>
-    <%= f.text_field :first_name_kana, class: "form-control" %>
-  </div>
-  <div class="form-group row">
-    <label class="col-form-label">郵便番号</label>
-    <%= f.text_field :postal_code, class: "form-control" %>
-  </div>
-  <div class="form-group row">
-    <label class="col-form-label">住所</label>
-    <%= f.text_field :address, class: "form-control", size: 40 %>
-  </div>
-  <div class="form-group row">
-    <label class="col-form-label">電話番号</label>
-    <%= f.text_field :telephone_number, class: "form-control" %>
-  </div>
-  <div class="form-group row">
-    <label class="col-form-label">メールアドレス</label>
-    <%= f.text_field :email, class: "form-control" %>
-  </div>
-  <div class="form-group row">
-    <label class="col-form-label">会員ステータス</label>
-    <p><%= f.radio_button :is_deleted, true %>有効</p>
-    <p class="ml-sm-5"><%= f.radio_button :is_deleted, false %>退会</p>
-  </div>
+    <div class="form-group row mt-md-3">
+      <%= f.label :会員ID, class: "col-form-label col-md-2" %>
+      <div class="col mt-md-1">
+        <%= @customer.id %>
+      </div>
+    </div>
 
-  <div class="actions mt-1 offset-sm-5">
-    <%= f.submit "変更を保存", class: "btn btn-success btn-sm col-sm-3" %>
-  </div>
+    <div class="form-group row">
+      <%= f.label :氏名, class: "col-form-label col-md-2" %>
+      <div class="col-md-3">
+        <%= f.text_field :last_name, class: "form-control" %>
+      </div>
+      <div class="col-md-3">
+        <%= f.text_field :first_name, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :フリガナ, class: "col-form-label col-md-2" %>
+      <div class="col-md-3">
+        <%= f.text_field :last_name_kana, class: "form-control" %>
+      </div>
+      <div class="col-md-3">
+        <%= f.text_field :first_name_kana, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :郵便番号, class: "col-form-label col-md-2" %>
+      <div class="col-md-3">
+        <%= f.text_field :postal_code, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :住所, class: "col-form-label col-md-2" %>
+      <div class="col-md-7">
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :電話番号, class: "col-form-label col-md-2" %>
+      <div class="col-md-3">
+        <%= f.text_field :telephone_number, class: "form-control" %>
+      </div>
+
+    </div>
+    <div class="form-group row">
+      <%= f.label :メールアドレス, class: "col-form-label col-md-2" %>
+      <div class="col-md-3">
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :会員ステータス, class: "col-form-label col-md-2" %>
+      <div class="col-md-1">
+        <%= f.radio_button :is_deleted, false %>有効
+      </div>
+      <div class="col-md-1">
+        <%= f.radio_button :is_deleted, true %>退会
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="actions mt-3 col-md-3 offset-md-2">
+        <%= f.submit "変更を保存", class: "btn btn-success btn-sm form-control" %>
+      </div>
+    </div>
+
+  <% end %>
 </div>
