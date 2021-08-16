@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
   def new
     if current_customer.cart_items.blank?
       redirect_to cart_items_path
@@ -28,7 +29,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = current_customer.orders.new(order_params)
     @order.total_payment = params[:total_payment]
-    @order.payment_method = params[:order][:payment_method].to_i
+    @order.payment_method = params[:payment_method]
     @order.save
     @cart_items = current_customer.cart_items.all
       @cart_items.each do |cart_item|

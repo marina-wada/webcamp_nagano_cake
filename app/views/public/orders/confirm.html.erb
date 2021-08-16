@@ -73,6 +73,7 @@
       <%= f.hidden_field :address %>
       <%= f.hidden_field :name %>
       <%= hidden_field_tag :total_payment, @total_payment %>
+      <%= hidden_field_tag :payment_method, @order.payment_method %>
       <%= f.submit :注文を確定する, class: "offset-md-4 col-md-2 btn btn-success btn-sm" %>
     </div>
   <% end %>
