@@ -17,6 +17,10 @@ Rails.application.routes.draw do
       end
     end
     resources :customers, only: [:show, :edit, :update] do
+      member do
+        get 'check'
+        patch 'withdraw'
+      end
       collection do
         get 'unsubscribe'
         patch 'withdraw'
@@ -25,6 +29,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :order_details, only: [:update]
     resources :orders, only: [:show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]

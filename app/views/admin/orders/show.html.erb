@@ -42,15 +42,15 @@
           </tr>
         </thead>
         <tbody>
-          <%= form_with model: @order_detail, url: admin_order_path(@order), local: true do |f| %>
-            <% @order.order_details.each do |order_detail| %>
+          <% @order.order_details.each do |order_detail| %>
+            <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), local: true do |f| %>
             <tr>
               <td><%= order_detail.item.name %></td>
               <td><%= order_detail.price.to_s(:delimited) %></td>
               <td><%= order_detail.amount %></td>
               <td><%= (order_detail.price * order_detail.amount).to_s(:delimited) %></td>
               <td>
-                <%= f.select(:status, OrderDetail.making_statuses.keys) %>
+                <%= f.select(:making_status, OrderDetail.making_statuses.keys) %>
                 <%= f.submit "更新", class: "btn btn-success btn-sm" %>
               </td>
             </tr>
