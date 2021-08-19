@@ -2,3 +2,11 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d"
+  activerecord:
+      models:
+        item: 商品
+      attributes:
+        item:
+          name: 商品名
+          introduction: 商品説明文
+          price: 税抜き価格

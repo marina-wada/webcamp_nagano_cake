@@ -9,8 +9,8 @@ class Customer < ApplicationRecord
 
   enum is_deleted: {有効: false, 退会: true}
 
-  def active_for_authentication?
-    super && (self.is_deleted === "false")
+  def active_for_authentication? #デバイスで用意しているヘルパーメソッド
+    super && (self.is_deleted === "有効")
   end
 
   def full_name
