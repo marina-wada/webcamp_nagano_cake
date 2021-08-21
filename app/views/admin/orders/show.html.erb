@@ -24,7 +24,7 @@
             <%= form_with model: @order, url: admin_order_path(@order), local: true do |f| %>
             <th>
               <%= f.select(:status, Order.statuses.keys) %>
-              <%= f.submit "更新" %>
+              <%= f.submit "更新", class: "btn btn-success btn-sm" %>
             </th>
           </tr>
         <% end %>

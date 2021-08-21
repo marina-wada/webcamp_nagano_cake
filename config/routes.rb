@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :order_details, only: [:update]
+    get '/order_details/:id', to: 'orders#show'
     resources :orders, only: [:show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]

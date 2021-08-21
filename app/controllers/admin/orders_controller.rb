@@ -6,8 +6,17 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+    @order_detail = @order.order_details
     @order.update(order_params)
-    redirect_to admin_order_path(@order)
+    if  @order.status == "入金確認"
+      @order_detail.update_all(making_status: "制作待ち")
+      redirect_to admin_order_path(@order)
+    elsif @order.status == "発送済み"
+      @order_detail.update_all(making_status: "発送済")
+      redirect_to admin_order_path(@order)
+    else
+      redirect_to admin_order_path(@order)
+    end
   end
 
   private
