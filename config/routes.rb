@@ -19,11 +19,11 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :update] do
       member do
         get 'check'
-        patch 'withdraw'
+        patch 'withdrawl'
       end
       collection do
         get 'unsubscribe'
-        patch 'withdraw'
+        patch 'withdrawl'
       end
     end
   end
